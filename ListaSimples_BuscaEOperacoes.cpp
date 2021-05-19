@@ -154,18 +154,6 @@ void removeFimSequencial(pessoa *&ponteiroSequencial, int *tamanhoDaLista){
 
 void removePosicaoSequencial(pessoa *&ponteiroSequencial, int *tamanhoDaLista, int posicao){
 
-string retornaNomeSequencial(pessoa *&ponteiroSequencial, int *tamanhoDaLista, int rg){
-    string nome = "Não encontrado";
-
-    //Busca pelo nome digitado
-    int cont;
-    for(cont = 0; cont < *tamanhoDaLista ; cont++){
-        if(ponteiroSequencial[cont].rg == rg){
-            nome = ponteiroSequencial[cont].nome;
-        }
-    }
-    return nome;
-}
       //Cria um vetor com uma posição a menos
     pessoa *novaListaSequencial = new pessoa[*tamanhoDaLista - 1];
 
@@ -181,6 +169,19 @@ string retornaNomeSequencial(pessoa *&ponteiroSequencial, int *tamanhoDaLista, i
             novaListaSequencial[cont].rg = ponteiroSequencial[cont+1].rg;
         }
     }
+}
+
+string retornaNomeSequencial(pessoa *&ponteiroSequencial, int *tamanhoDaLista, int rg){
+    string nome = "Não encontrado";
+
+    //Busca pelo nome digitado
+    int cont;
+    for(cont = 0; cont < *tamanhoDaLista ; cont++){
+        if(ponteiroSequencial[cont].rg == rg){
+            nome = ponteiroSequencial[cont].nome;
+        }
+    }
+    return nome;
 }
 // ---------------------- FUNÇÃO PRINCIPAL ----------------------//
 
@@ -199,10 +200,7 @@ int main(){
     int tamanhoDaLista = 0;
 
     //MENU
-    while(funcaoDesejada < 10 && funcaoDesejada > 0){
-
-            //Imprime a lista completa
-            imprimeSequencial(ponteiroSequencial, tamanhoDaLista);
+    while(funcaoDesejada < 9 && funcaoDesejada > 0){
 
             //Mostrando o meunu
             cout <<	"Operações \n";
@@ -313,15 +311,17 @@ int main(){
                 }
             break;
         case 8:
+            //Imprime a lista completa
+            imprimeSequencial(ponteiroSequencial, tamanhoDaLista);
             break;
         case 9:
             system("s");
             break;
 
+
+
+        }
     }
-
-    }
-
-
-return 0;
+}
+    return 0;
 }
